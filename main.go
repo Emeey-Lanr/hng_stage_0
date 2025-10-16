@@ -3,7 +3,8 @@ package main
 import (
 	"hng_stage1/routes"
 	"log"
-
+     "os"
+	 "fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
@@ -19,5 +20,7 @@ func main () {
 	// profile route
 	routes.ProfileRoute(r)
 	
-	r.Run(":8080")
+	port := os.Getenv("PORT")
+
+	r.Run(fmt.Sprintf(":%s", port))
 }
