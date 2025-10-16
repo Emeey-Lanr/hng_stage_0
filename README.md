@@ -1,16 +1,16 @@
  # HNG STAGE 0 TASK
  
  ## Task Description
- This project makes us of the RESTful API endpoint / me  to return my profile information (email, name, backend stack), a random cat fact fetched from [CAT API URL](https://catfact.ninja/fact) and the current UTC timestamp in ISO 8601 format
+ This project makes us of the RESTful API endpoint GET / me  to return my profile information (email, name, backend stack), a random cat fact fetched from [CAT API URL](https://catfact.ninja/fact) and the current UTC timestamp in ISO 8601 format
 
 
 # Getting Started
 1.  Clone the Repository
 
 ``` bash
-git clone url
+git clone https://github.com/Emeey-Lanr/hng_stage_0.git
 
-cd repo name
+cd repo hng_stage_0
 
 ```
 
@@ -34,20 +34,20 @@ NAME = <Your name>
 go run main.go
 ```
 
-Your API will be available at http://lochost:8080/me
+Your API will be available at http://locahost:8080/me
 
 
 Example Response 
 ```json
 {
- "status":"",  
+ "status":"success",  
 "user" :{
     "email":"<Your Email>",
     "name":"<Your Name>",
     "stack":"GO/GIN"
-}  
-"timestamp":"",
-"fact":""
+}  ,
+"timestamp":"2025-10-16T10:48:08Z",
+"fact":"Tylenol and chocolate are both poisionous to cats."
 } 
 ```
 
