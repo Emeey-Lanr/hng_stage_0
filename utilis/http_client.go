@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-var httpClient = &http.Client{
+var HttpClient = &http.Client{
 	Transport: &http.Transport{
 		DialContext: (&net.Dialer{
 			Timeout: 5 * time.Second, //wait time for TCP Timeout

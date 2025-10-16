@@ -2,7 +2,10 @@ module hng_stage1
 
 go 1.25.1
 
-require github.com/gin-gonic/gin v1.11.0
+require (
+	github.com/gin-gonic/gin v1.11.0
+	github.com/joho/godotenv v1.5.1
+)
 
 require (
 	github.com/bytedance/gopkg v0.1.3 // indirect

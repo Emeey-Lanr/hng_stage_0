@@ -1,6 +1,6 @@
 package models
 
-import "time"
+
 
 type UserData struct {
 	Email string `json:"email"`
@@ -9,8 +9,8 @@ type UserData struct {
 }
 type MeResponse struct {
 	Status    string   `json:"status,omitempty"`
-	User      UserData `json:"user,omitempty"`
-	Timestamp time.Time `json:"timeStamp,omitempty"`
+	User    interface{} `json:"user,omitempty"`
+	Timestamp  string `json:"timestamp,omitempty"`
 	Fact string `json:"fact,omitempty"`
 
 }

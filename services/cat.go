@@ -2,43 +2,51 @@ package services
 
 import (
 	"context"
-	"errors"
+	"encoding/json"
+	"log"
 	"net/http"
+	"os"
 	"time"
 
-	"github.com/gin-gonic/gin"
+	"hng_stage1/models"
 	"hng_stage1/utilis"
+
+	"github.com/gin-gonic/gin"
 )
 
-func FetchCatFact (c *gin.Context, httpClient *http.Client) {
-
+func FetchCatFact (c *gin.Context) (string, error){
+ var catFact models.CatFact
+ var url = os.Getenv("CATURL")
 	// context cancels the request if user leaves or10 seconds passes
 	ctx, cancel := context.WithTimeout(c.Request.Context(), 10 * time.Second)
   
 	defer cancel()
 
 	// request
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, "https://catfact.ninja/fact", nil)
+	request , err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
+ 
+	 if err != nil {
+	return "", err
+ }
+	 
+//  Header with the Request
+request.Header.Set("Accept", "application/json")
+	 //makes the request
+
+   	 response, err := utilis.HttpClient.Do(request)
+	 
+	 if err != nil {
+		return "", err
+	 }
 	
-	httpClient.Do(req) //mekes the request
+	defer response.Body.Close()
 
-	defer req.Body.Close()
+//   decode body and bind to struct
+  if err := json.NewDecoder(response.Body).Decode(&catFact); err != nil {
+	log.Printf("decode error: %v\n", err)
+	return "", err
+  }
 
-	// if timeout related
-	if errors.Is(err, context.DeadlineExceeded){
-	 utilis.Error(c, http.StatusGatewayTimeout, "Request timeout")
-	 return
-	}
-
-	// if user cancels request
-	if errors.Is(err, context.Canceled){
-		 utilis.Error(c, http.StatusRequestTimeout, "Request Cancelled")
-	 return
-	}
-
+  return catFact.Fact, nil
 	
-
-
-
-
 }
