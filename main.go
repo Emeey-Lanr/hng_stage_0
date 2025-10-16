@@ -1,10 +1,12 @@
 package main
 
 import (
+	"fmt"
+	"hng_stage1/middleware"
 	"hng_stage1/routes"
 	"log"
-     "os"
-	 "fmt"
+	"os"
+
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
@@ -19,6 +21,9 @@ func main () {
 	}
 	// profile route
 	routes.ProfileRoute(r)
+	
+	// A global rate limiter
+	r.Use(middleware.HandleRateLimter())
 	
 	port := os.Getenv("PORT")
 

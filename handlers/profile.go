@@ -35,7 +35,7 @@ func GetProfileMe(c *gin.Context){
 		return
 	}
 
-	var user  = models.UserData{Email: os.Getenv("EMAIL"), Name: os.Getenv("NAME"), Stack: "GO/GIN"}
+	var user  = models.UserData{Email: os.Getenv("EMAIL"), Name: os.Getenv("NAME"), Stack: "Go/Gin"}
 	 
 	utilis.Success(c, http.StatusOK, "success", user, time.Now().UTC().Format(time.RFC3339), fact)
 

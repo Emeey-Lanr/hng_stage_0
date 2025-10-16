@@ -37,6 +37,10 @@ go run main.go
 Your API will be available at http://locahost:8080/me
 
 
+## API DOCUMENTATION
+
+### GET /me
+
 Example Response 
 ```json
 {
@@ -44,15 +48,14 @@ Example Response
 "user" :{
     "email":"<Your Email>",
     "name":"<Your Name>",
-    "stack":"GO/GIN"
+    "stack":"Go/Gin"
 }  ,
 "timestamp":"2025-10-16T10:48:08Z",
 "fact":"Tylenol and chocolate are both poisionous to cats."
 } 
 ```
 
+```bash
+Content-Type: application/json
+```
 
-
- <!-- Instructions to run locally -->
-
-<!-- Environmental variables  -->
