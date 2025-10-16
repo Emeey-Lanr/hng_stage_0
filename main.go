@@ -15,7 +15,7 @@ func main () {
 
 	 
 	if  err := godotenv.Load(); err != nil{
-	  log.Fatal("Error Loading .env", err.Error())    
+	  log.Println("Error Loading .env", err.Error())    
 	}
 	// profile route
 	routes.ProfileRoute(r)
